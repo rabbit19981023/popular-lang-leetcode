@@ -1,3 +1,6 @@
+# for java
+# *.class
+
 # for csharp
 bin/
 dev.csproj
