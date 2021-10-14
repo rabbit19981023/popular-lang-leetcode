@@ -1,7 +1,7 @@
-# for java
+# java compiled classes
 *.class
 
-# for csharp
+# csharp compiled files and dev files
 bin/
 dev.csproj
 obj/

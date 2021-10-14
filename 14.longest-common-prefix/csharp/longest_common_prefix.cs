@@ -16,9 +16,6 @@ namespace Solution
             string result_01 = solution.LongestCommonPrefix(testCase_01.Strs);
             string result_02 = solution.LongestCommonPrefix(testCase_02.Strs);
 
-            /*
-             * Test Case
-             */
             Console.WriteLine();
             Console.WriteLine("Expected: 'fl'" + "\n" + "Output: " + result_01);
             Console.WriteLine();

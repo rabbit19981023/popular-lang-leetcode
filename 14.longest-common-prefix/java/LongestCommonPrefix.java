@@ -2,15 +2,14 @@ class Main
 {
     public static void main(String[] args)
     {
-        Solution solution = new Solution();
         Test test_01 = new Test(new String[] { "flower", "flow", "flight" });
         Test test_02 = new Test(new String[] { "dog", "rececar", "car" });
+
+        Solution solution = new Solution();
+
         String result_01 = solution.longestCommonPrefix(test_01.strs);
         String result_02 = solution.longestCommonPrefix(test_02.strs);
 
-        /*
-         * Test Case
-         */
         System.out.println();
         System.out.println("Expected: 'fl'" + "\n" + "Output: " + result_01);
         System.out.println();

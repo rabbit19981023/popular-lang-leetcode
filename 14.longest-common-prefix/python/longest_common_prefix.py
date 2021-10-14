@@ -39,12 +39,17 @@ class Test:
         self.strs = strs
 
 # Test Case
-solution = Solution()
 test_01 = Test([ "flower","flow","flight" ])
 test_02 = Test([ "dog","racecar","car" ])
 
+solution = Solution()
+
+result_01 = solution.longest_common_prefix(test_01.strs)
+result_02 = solution.longest_common_prefix(test_02.strs)
+
 print()
-print("Expected: 'fl'" + "\n" + "Output: " + solution.longest_common_prefix(test_01.strs))
+print("Expected: 'fl'" + "\n" + "Output: " + result_01)
 print()
-print("Expected: ''" + "\n" + "Output: " + solution.longest_common_prefix(test_02.strs))
+
+print("Expected: ''" + "\n" + "Output: " + result_02)
 print()
