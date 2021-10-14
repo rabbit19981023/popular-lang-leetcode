@@ -1,0 +1,4 @@
+# for csharp
+bin/
+dev.csproj
+obj/
