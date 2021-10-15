@@ -1,7 +1,10 @@
+# typescript compiled files (.js)
+*.js
+
 # java compiled classes
 *.class
 
 # csharp compiled files and dev files
 bin/
-dev.csproj
 obj/
+*.csproj

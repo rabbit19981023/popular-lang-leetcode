@@ -13,6 +13,7 @@ class Main
         System.out.println();
         System.out.println("Expected: 'fl'" + "\n" + "Output: " + result_01);
         System.out.println();
+        
         System.out.println("Expected: ''" + "\n" + "Output: " + result_02);
         System.out.println();
     }

@@ -39,8 +39,8 @@ class Test:
         self.strs = strs
 
 # Test Case
-test_01 = Test([ "flower","flow","flight" ])
-test_02 = Test([ "dog","racecar","car" ])
+test_01 = Test([ "flower", "flow", "flight" ])
+test_02 = Test([ "dog", "racecar", "car" ])
 
 solution = Solution()
 

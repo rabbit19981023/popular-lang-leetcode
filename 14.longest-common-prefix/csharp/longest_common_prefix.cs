@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Solution
+namespace LeetCode
 {
     class Solution
     {
@@ -19,6 +19,7 @@ namespace Solution
             Console.WriteLine();
             Console.WriteLine("Expected: 'fl'" + "\n" + "Output: " + result_01);
             Console.WriteLine();
+            
             Console.WriteLine("Expected: ''" + "\n" + "Output: " + result_02);
             Console.WriteLine();
         }
