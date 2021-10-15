@@ -4,11 +4,11 @@ This project is just for me to practice various programming languages.
 
 Language List:
 
-[x] Python
-[x] TypeScript (Node.js)
-[x] Go
-[x] C#
-[x] Java
+- [x] Python
+- [x] TypeScript (Node.js)
+- [x] Go
+- [x] C#
+- [x] Java
 
 ## Set Up Development Environment via Docker
 

@@ -51,11 +51,7 @@ namespace LeetCode
 
         public bool IsValid(string[] strs)
         {
-            if (! (strs == null || strs.Length == 0)) {
-                return true;
-            }
-
-            return false;
+            return ! (strs == null || strs.Length == 0);
         }
 
         public int GetMinLen(string[] strs)

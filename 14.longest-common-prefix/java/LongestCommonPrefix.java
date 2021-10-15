@@ -48,7 +48,7 @@ class Solution
 
     public Boolean isValid(String[] strs)
     {
-        return (! (strs == null || strs.length == 0)) ? true : false;
+        return ! (strs == null || strs.length == 0);
     }
 
     public int getMinLen(String[] strs)
