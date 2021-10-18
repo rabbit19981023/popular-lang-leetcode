@@ -6,15 +6,13 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            string[] Strs_01 = new string[] { "flower","flow","flight" };
-            string[] Strs_02 = new string[] { "dog","racecar","car" };
-            TestCase testCase_01 = new TestCase{ Strs = Strs_01 };
-            TestCase testCase_02 = new TestCase{ Strs = Strs_02 };
+            Test test_01 = new Test{ Strs = new string[] { "flower","flow","flight" } };
+            Test test_02 = new Test{ Strs = new string[] { "dog","racecar","car" } };
 
             Solution solution = new Solution();
 
-            string result_01 = solution.LongestCommonPrefix(testCase_01.Strs);
-            string result_02 = solution.LongestCommonPrefix(testCase_02.Strs);
+            string result_01 = solution.LongestCommonPrefix(test_01.Strs);
+            string result_02 = solution.LongestCommonPrefix(test_02.Strs);
 
             Console.WriteLine();
             Console.WriteLine("Expected: 'fl'" + "\n" + "Output: " + result_01);
@@ -81,7 +79,7 @@ namespace LeetCode
         }
     }
 
-    class TestCase
+    class Test
     {
        public string[] Strs { get; set; }
     }

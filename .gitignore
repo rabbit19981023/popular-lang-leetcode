@@ -1,3 +1,6 @@
+# vim editor runtime files
+*.swp
+
 # typescript compiled files (.js)
 *.js
 
@@ -8,3 +11,6 @@
 bin/
 obj/
 *.csproj
+
+# cpp compiled files
+*.out

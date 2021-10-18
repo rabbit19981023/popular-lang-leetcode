@@ -7,8 +7,10 @@ Language List:
 - [x] Python
 - [x] TypeScript (Node.js)
 - [x] Go
+- [x] Rust
 - [x] C#
 - [x] Java
+- [x] C++
 
 ## Set Up Development Environment via Docker
 
@@ -101,6 +103,39 @@ Run the golang code:
 $ go run <go-src-file>
 ```
 
+### Rust
+
+Build the docker image for rust:
+
+```bash
+$ cd Docker
+$ sudo docker build -f rust.dockerfile -t leetcode/rust:latest ./
+```
+
+Run and get into the rust container:
+
+```bash
+$ sudo docker run \
+    --rm \ # remove the container after exit it
+    -it \ # get into the container
+    -w "/opt/test" \ # set working directory
+    -v "<rust-src-dir>:/opt/test" \ # mount host dir/files to container inside
+    leetcode/rust:latest \ # rust image
+    /bin/bash # run the command after get into the container
+```
+
+Compile the rust source code:
+
+```bash
+$ rustc <rust-src-file>
+```
+
+Run the rust binary executable:
+
+```bash
+$ ./<rust-binary-executable>
+```
+
 ### C#
 
 Build the docker image for csharp:
@@ -165,4 +200,36 @@ Run the java binary executable (`.class` file):
 
 ```bash
 $ java Main # without .class extension
+```
+### C++
+
+Build the docker image for cpp:
+
+```bash
+$ cd Docker
+$ sudo docker build -f cpp.dockerfile -t leetcode/cpp:latest ./
+```
+
+Run and get into the cpp container:
+
+```bash
+$ sudo docker run \
+    --rm \ # remove the container after exit it
+    -it \ # get into the container
+    -w "/opt/test" \ # set working directory
+    -v "<cpp-src-dir>:/opt/test" \ # mount host dir/files to container inside
+    leetcode/cpp:latest \ # cpp image
+    /bin/bash # run the command after get into the container
+```
+
+Compile the cpp source code:
+
+```bash
+$ clang++ -o <output-file-name> <cpp-src-file>
+```
+
+Run the cpp binary executable:
+
+```bash
+$ ./<output-file-name>
 ```
