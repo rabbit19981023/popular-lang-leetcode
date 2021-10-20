@@ -163,6 +163,12 @@ Set up csharp project:
 $ dotnet new console # will init project in current working dir
 ```
 
+Be aware of removing the default entry program:
+
+```bash
+$ rm -f Program.cs
+```
+
 Run the csharp code:
 
 ```bash

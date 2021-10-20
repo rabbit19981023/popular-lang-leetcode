@@ -1,1 +1,1 @@
-Just feel free to customize these Dockerfile to feet your own needs.
+Just feel free to customize these Dockerfile to fit your own needs.
