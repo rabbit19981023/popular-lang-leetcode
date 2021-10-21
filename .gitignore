@@ -15,6 +15,6 @@ obj/
 # cpp compiled files
 *.out
 
-# rust all files except *.rs
+# rust all files except src file(*.rs)
 rust/
 !rust/*.rs
