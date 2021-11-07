@@ -56,26 +56,4 @@ class Solution {
     }
 }
 
-class Test {
-    strs: string[]
-
-    constructor(strs: string[]) {
-        this.strs = strs
-    }
-}
-
-// Test Case
-const test_01: Test = new Test([ "flower", "flow", "flight" ])
-const test_02: Test = new Test([ "dog", "racecar", "car" ])
-
-const solution: Solution = new Solution()
-
-const result_01: string = solution.longestCommonPrefix(test_01.strs)
-const result_02: string = solution.longestCommonPrefix(test_02.strs)
-
-console.log()
-console.log("Expected: 'fl'\n" + "Output: " + result_01)
-console.log()
-
-console.log("Expected: ''\n" + "Output: " + result_02)
-console.log()
+export { Solution }

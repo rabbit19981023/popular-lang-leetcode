@@ -2,24 +2,10 @@
 
 namespace LeetCode
 {
-    class Solution
+    public class Solution
     {
         static void Main(string[] args)
         {
-            Test test_01 = new Test{ Strs = new string[] { "flower","flow","flight" } };
-            Test test_02 = new Test{ Strs = new string[] { "dog","racecar","car" } };
-
-            Solution solution = new Solution();
-
-            string result_01 = solution.LongestCommonPrefix(test_01.Strs);
-            string result_02 = solution.LongestCommonPrefix(test_02.Strs);
-
-            Console.WriteLine();
-            Console.WriteLine("Expected: 'fl'" + "\n" + "Output: " + result_01);
-            Console.WriteLine();
-            
-            Console.WriteLine("Expected: ''" + "\n" + "Output: " + result_02);
-            Console.WriteLine();
         }
 
         public string LongestCommonPrefix(string[] strs)
@@ -47,12 +33,12 @@ namespace LeetCode
             return strs[0].Substring(0, result);
         }
 
-        public bool IsValid(string[] strs)
+        private bool IsValid(string[] strs)
         {
             return ! (strs == null || strs.Length == 0);
         }
 
-        public int GetMinLen(string[] strs)
+        private int GetMinLen(string[] strs)
         {
             int minLen = strs[0].Length;
 
@@ -65,7 +51,7 @@ namespace LeetCode
             return minLen;
         }
 
-        public bool IsCommonPrefix(int mid, string[] strs)
+        private bool IsCommonPrefix(int mid, string[] strs)
         {
             string prefix = strs[0].Substring(0, mid);
 
@@ -77,10 +63,5 @@ namespace LeetCode
 
             return true;
         }
-    }
-
-    class Test
-    {
-       public string[] Strs { get; set; }
     }
 }

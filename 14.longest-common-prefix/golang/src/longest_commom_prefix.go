@@ -1,30 +1,10 @@
-package main
+package solution
 
 import (
-	"fmt"
 	"strings"
 )
 
-func main() {
-	test_01 := Test{[]string{"flower", "flow", "flight"}}
-	test_02 := Test{[]string{"dog", "racecar", "car"}}
-
-	result_01 := longestCommonPrefix(test_01.strs)
-	result_02 := longestCommonPrefix(test_02.strs)
-
-	fmt.Println()
-	fmt.Println("Expected: 'fl'\n" + "Output: " + result_01)
-	fmt.Println()
-
-	fmt.Println("Expected: ''\n" + "Output: " + result_02)
-	fmt.Println()
-}
-
-type Test struct {
-	strs []string
-}
-
-func longestCommonPrefix(strs []string) string {
+func LongestCommonPrefix(strs []string) string {
 	if !isValid(strs) {
 		return ""
 	}

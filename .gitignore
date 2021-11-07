@@ -1,20 +1,42 @@
-# vim editor runtime files
-*.swp
+# ---- Python ---- #
+# cached files
+__pycache__/
 
-# typescript compiled files (.js)
-*.js
+# ---- TypeScript ---- #
+# compiled files
+**/src/*.js
 
-# java compiled classes
-*.class
+# tests cached files
+coverage/
 
-# csharp compiled files and dev files
+# ---- Golang ---- #
+
+# ---- Rust ---- #
+# compiled files
+**/rust/src/**
+!**/rust/src/*.rs
+
+# compiled and cached files
+target/
+
+# ---- Csharp ---- #
+# compiled files and dev files
 bin/
 obj/
-*.csproj
+TestResults/
 
-# cpp compiled files
+# ---- Java ---- #
+# compiled files
+*.class
+
+# Maven compiled files
+target/
+
+# ---- PHP ---- #
+
+# ---- Cpp ---- #
+# compiled files
 *.out
 
-# rust all files except src file(*.rs)
-rust/
-!rust/*.rs
+# CMake compiled files
+build/

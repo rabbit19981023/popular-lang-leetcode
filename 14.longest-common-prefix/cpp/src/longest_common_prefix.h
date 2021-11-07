@@ -67,32 +67,7 @@ public:
     };
 };
 
-class Test {
-public:
-    vector<string> strs;
-    Test(vector<string> s) { strs = s; }
-};
-
-int main(void) {
-    /* 
-     * Test Case 
-     */
-    // creates a pointer refers to the class instance.
-    Test* test_ptr_01 = new Test({ "flower", "flow", "flight" });
-    Test* test_ptr_02 = new Test({ "dog", "racecar", "car" });
-
-    Solution solution;
-
-    // use `->` to find the member whom test_ptr points to.
-    string result_01 = solution.longestCommonPrefix(test_ptr_01->strs);
-    string result_02 = solution.longestCommonPrefix(test_ptr_02->strs);
-
-    cout << "" << endl;
-    cout << "Expected: 'fl'\n" << "Output: " << result_01 << endl;
-    cout << "" << endl;
-
-    cout << "Expected: ''\n" << "Output: " << result_02 << endl;
-    cout << "" << endl;
-
-    return 0;
-};
+/** Don't define main function, it may make GoogleTest can't find the Tests **/
+// int main(void) {
+//     return 0;
+// };
