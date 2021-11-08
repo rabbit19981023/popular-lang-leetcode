@@ -33,6 +33,7 @@ TestResults/
 target/
 
 # ---- PHP ---- #
+vendor/
 
 # ---- Cpp ---- #
 # compiled files

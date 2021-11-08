@@ -1,0 +1,9 @@
+{
+    "name": "andrew/leetcode",
+    "autoload": {
+        "psr-4": {
+            "Andrew\\Leetcode\\": "src/"
+        }
+    },
+    "require": {}
+}

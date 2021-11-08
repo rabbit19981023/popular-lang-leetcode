@@ -10,10 +10,10 @@ Language List:
 - [x] Rust
 - [x] C#
 - [x] Java
-- [ ] PHP
+- [x] PHP
 - [x] C++
 
-## Set Up Development Environment via Docker
+## Set Up Development Environment via `Docker`
 
 > Make sure that `Docker Desktop` has been already installed in your machine!!
 
@@ -23,7 +23,7 @@ Language List:
 
 If you create some directories or files inside docker container, they may be owned by `root`.
 
-To solve the problem, please run:
+To solve the permission problem, please run:
 
 ```bash
 # on your host, in project root dir
@@ -61,10 +61,10 @@ $ cd python/tests
 $ python -m unittest -v test_longest_common_prefix.TestCases
 ````
 
-> Install Python packages:
+> Install project dependencies:
 
 ```bash
-$ pip install [module1, module2 ...]
+$ pip install [package1, package2 ...]
 ```
 
 > Run source code:
@@ -120,16 +120,16 @@ const config = {
 module.exports = config;
 ```
 
-> Init the Node.js project in `./`:
+> Init the project via `Npm` in `./`:
 
 ```bash
 $ npm init -y
 ```
 
-> Install Node.js packages:
+> Install project dependencies:
 
 ```bash
-$ npm install [module1, module2 ...]
+$ npm install [package1, package2 ...]
 ```
 
 > Run `Npm` scripts defined in `package.json`:
@@ -172,7 +172,7 @@ $ cd golang/tests
 $ go test -v longest_common_prefix_test.go
 ```
 
-> Init the Go project in `./`:
+> Init the project in `./`:
 
 ```bash
 $ go mod init <project-name>
@@ -218,7 +218,7 @@ Run the tests:
 $ cargo test
 ```
 
-> Init the Rust project in `./`:
+> Init the project via `Cargo` in `./`:
 
 ```bash
 $ cargo init
@@ -364,7 +364,7 @@ Run the tests:
 $ mvn test
 ```
 
-> Init a Java project via `Moven`:
+> Init the project via `Moven` in `./<project-name>`:
 
 ```bash
 $ mvn archetype:generate \
@@ -403,6 +403,125 @@ $ java Main # without .class extension
 
 ### PHP
 
+Build the docker image for PHP:
+
+```bash
+$ cd Docker
+$ sudo docker build -f php.dockerfile -t leetcode/php:latest ./
+```
+
+Run and get into the PHP container:
+
+```bash
+$ sudo docker run \
+    --rm \ # remove the container after exit it
+    -it \ # get into the container
+    -w "/opt/leetcode" \ # set working dir
+    -v "<php-dir>:/opt/leetcode" \ # mount host dir/files to container inside
+    leetcode/php:latest \ # PHP image
+    /bin/bash # run the command after get into the container
+```
+
+Generating `./vendor/autoload.php` to autoloading PHP classes:
+
+```bash
+$ composer dump-autoload
+```
+
+Run the tests:
+
+```bash
+$ phpunit tests --testdox
+```
+
+> Init the project via `Composer` in `./`:
+
+```bash
+$ composer init # by answering interactive questions
+```
+
+> After init, your `./composer.json` may look like this:
+
+```json
+{
+    "name": "<vendor>/<project-name>",
+    "autoload": {
+        "psr-4": {
+            "<Vendor>\\<Project-name>\\": "src/"
+        }
+    },
+    "require": {}
+}
+
+```
+
+> You can have a php src like this:
+
+```php
+// `./src/Sum.php` # <----- first letter is capital
+
+<?php
+
+namespace <Vendor>\<Project-name>; # <----- add this line
+
+final class Sum
+{
+    final static function do(int $a, int $b): int {
+        return $a + $b;
+    }
+}
+```
+
+> And you can have a php test like this:
+
+```php
+// `./tests/SumTest.php` # <----- first letter is capital
+
+<?php
+
+require 'vendor/autoload.php';        # <----- add this line
+
+use PHPUnit\Framework\TestCase;       # <----- add this line
+use <Vendor>\<Project-name>\Sum;      # <----- add this line
+
+final class SumTest extends TestCase  # <----- add this line
+{
+    public function testCase_01(): void # method name with `test*()`
+    {
+        $input_1 = 1;
+        $input_2 = 4;
+        $expected = 5;
+
+        $result = Sum::do($input_1, $input_2);
+
+        $this->assertEquals($expected, $result);
+    }
+}
+```
+
+> Install the project dependencies listed in `./composer.lock`:
+
+```bash
+$ composer install
+```
+
+> Install project dependencies:
+
+```bash
+$ composer require [package1, package2 ...]
+```
+
+> Install project dev-dependencies:
+
+```bash
+$ composer require --dev [package1, package2 ...]
+```
+
+> Remove project dependencies:
+
+```bash
+$ composer remove [package1, package2 ...]
+```
 
 ### C++
 
@@ -425,11 +544,11 @@ $ sudo docker run \
     /bin/bash # run the command after get into the container
 ```
 
-Build the CMake project:
+Build the whole project via `CMake`:
 
 ```bash
-$ cmake -S . -B build
-$ cmake --build build
+$ cmake -S ./ -B build # generating cmake config files into ./build
+$ cmake --build build # compile the whole project into ./build
 ```
 
 Run the tests:
@@ -441,7 +560,7 @@ $ cd ./build && ctest
 $ ./build/<test-binary>
 ```
 
-> Create a file named `CMakeLists.txt`:
+> Before using `CMake` to build the whole project, you need to create a file named `CMakeLists.txt`:
 
 ```bash
 # `./CMakeLists.txt`:
