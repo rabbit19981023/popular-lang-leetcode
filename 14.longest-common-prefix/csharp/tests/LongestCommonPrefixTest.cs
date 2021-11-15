@@ -1,10 +1,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LeetCode;
+using Leetcode;
 
-namespace tests
+namespace LeetcodeTest
 {
     [TestClass]
-    public class TestCases
+    public class LongestCommonPrefixTest
     {
         Solution solution = new Solution();
 
@@ -15,7 +15,7 @@ namespace tests
         }
 
         [TestMethod]
-        public void TestCase_01()
+        public void have_longest_common_prefix()
         {
             string[] input = new string[] { "flower","flow","flight" };
             string expected = "fl";
@@ -24,7 +24,7 @@ namespace tests
         }
 
         [TestMethod]
-        public void TestCase_02()
+        public void no_longest_common_prefix()
         {
             string[] input = new string[] { "dog","racecar","car" };
             string expected = "";

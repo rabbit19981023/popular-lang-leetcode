@@ -25,8 +25,8 @@ impl Solution {
             high = mid - 1;
         }
 
-        mid = (low + high) / 2;
-        return strs[0][0..mid].to_owned();
+        let result: usize = (low + high) / 2;
+        return strs[0][0..result].to_owned();
     }
 
     fn is_valid(&self, strs: &Vec<String>) -> bool {

@@ -26,8 +26,8 @@ public:
             high = mid - 1;
         }
 
-        mid = (low + high) / 2;
-        return strs[0].substr(0, mid);
+        int result = (low + high) / 2;
+        return strs[0].substr(0, result);
     };
 
     bool isValid(vector<string>& strs) {

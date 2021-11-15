@@ -6,17 +6,17 @@ void processTestCase(vector<string> input, string expected) {
 
 	// since `solution_ptr` is a pointer which points to Solution class
 	// just use `->` to access the class member
-	string result = solution_ptr->longestCommonPrefix(input);
-	ASSERT_EQ(result, expected);
+	string actual = solution_ptr->longestCommonPrefix(input);
+	ASSERT_EQ(actual, expected);
 }
 
-TEST(LongestCommonPrefixTest, TestCase_01) {
+TEST(LongestCommonPrefixTest, HaveLongestCommonPrefix) {
 	vector<string> input = { "flower", "flow", "flight" };
 	string expected = "fl";
 	processTestCase(input, expected);
 }
 
-TEST(LongestCommonPrefixTest, TestCase_02) {
+TEST(LongestCommonPrefixTest, NoLongestCommonPrefix) {
 	vector<string> input = { "dog", "racecar", "car" };
 	string expected = "";
 	processTestCase(input, expected);

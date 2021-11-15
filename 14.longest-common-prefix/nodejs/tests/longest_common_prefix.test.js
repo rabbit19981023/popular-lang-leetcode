@@ -3,18 +3,18 @@ const { Solution } = require('../src/longest_common_prefix')
 const solution = new Solution()
 
 const processTestCase = function (input, expected) {
-	const result = solution.longestCommonPrefix(input)
-	expect(result).toBe(expected)
+	const actual = solution.longestCommonPrefix(input)
+	expect(actual).toBe(expected)
 }
 
-test("TestCase 01", () => {
+test("Test: have longest common prefix", () => {
 	const input = [ "flower", "flow", "flight" ]
 	const expected = "fl"
 
 	processTestCase(input, expected)
 })
 
-test("TestCase 02", () => {
+test("Test: no longest common prefix", () => {
 	const input = [ "dog", "racecar", "car" ]
 	const expected = ""
 

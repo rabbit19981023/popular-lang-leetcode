@@ -13,15 +13,12 @@ public class AppTest
 
     private void process_test_case(String[] input, String expected)
     {
-        String result = solution.longestCommonPrefix(input);
-        assertEquals(expected, result);
+        String actual = solution.longestCommonPrefix(input);
+        assertEquals(expected, actual);
     }
     
-    /**
-     * Test Case 01
-     */
     @Test
-    public void testCase_01()
+    public void have_longest_common_prefix()
     {
         String[] input = new String[] { "flower", "flow", "flight" };
         String expected = "fl";
@@ -29,11 +26,8 @@ public class AppTest
         process_test_case(input, expected);
     }
 
-    /**
-     *  Test Case 02
-     */
     @Test
-    public void testCase_02()
+    public void no_longest_common_prefix()
     {
         String[] input = new String[] { "dog", "rececar", "car" };
         String expected = "";
