@@ -60,7 +60,7 @@ $ sudo docker run \
 Run the tests:
 
 ```bash
-$ cd ./tests
+$ cd <python-dir>   # ATTENTION: <python-dir> is your python project root
 $ python -m unittest -v
 ````
 
@@ -79,18 +79,8 @@ class Sum:
 ```python
 # `./tests/test_sum.py`
 
-# ---- To make source files can be found by Python ---- #
-import os
-import sys
-
-test_file_dir = os.path.dirname(__file__)
-src_file_dir = os.path.dirname(test_file_dir) + "/src"
-
-sys.path.append(src_file_dir)
-
-# ---- Tests ---- #
 import unittest
-from sum import Sum
+from src.sum import Sum
 
 class SumTest(unittest.TestCase):
     _sum = Sum()
@@ -112,9 +102,11 @@ class SumTest(unittest.TestCase):
 ```bash
 -- ./
 ---- src/
------- sum.py
+------ __init__.py    # <- to make src/ dir to be treated as a package
+------ sum.py         # <- thanks to ./__init__.py, it will be treated as a module
 ---- tests/
------- test_sum.py
+------ __init__.py    # <- to make tests/ dir to be treated as a package
+------ test_sum.py    # <- thanks to ./__init__.py, it will be treated as a module
 ```
 
 > Install python modules globally:

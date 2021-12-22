@@ -1,15 +1,5 @@
-# ---- To make source files can be found by Python ---- #
-import os
-import sys
-
-test_file_dir = os.path.dirname(__file__)
-src_file_dir = os.path.dirname(test_file_dir) + "/src"
-
-sys.path.append(src_file_dir)
-
-# ---- Unit Tests ---- #
 import unittest
-from longest_common_prefix import Solution
+from src.longest_common_prefix import Solution
 
 class LongestCommonPrefixTest(unittest.TestCase):
 	solution = Solution()
