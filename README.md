@@ -35,7 +35,7 @@ $ chown -R 1000:1000 ./
 
 <details>
   <summary>
-    <span id="python" style="font-size: 1.25em">Python</span>
+    <span id="python" style="font-size: 20px">Python</span>
   </summary>
 
 Build the docker image for Python:
@@ -132,7 +132,7 @@ $ python <python-src>
 
 <details>
   <summary>
-    <span id="typescript" style="font-size: 1.25em">TypeScript</span>
+    <span id="typescript" style="font-size: 20px">TypeScript</span>
   </summary>
 
 Build the docker image for Node.js:
@@ -274,7 +274,7 @@ $ node <compiled-js-file>
 
 <details>
   <summary>
-    <span id="go" style="font-size: 1.25em">Go</span>
+    <span id="go" style="font-size: 20px">Go</span>
   </summary>
 
 Build the docker image for Go:
@@ -377,7 +377,7 @@ $ go run <go-src>
 
 <details>
   <summary>
-    <span id="rust" style="font-size: 1.25em">Rust</span>
+    <span id="rust" style="font-size: 20px">Rust</span>
   </summary>
 
 Build the docker image for Rust:
@@ -507,7 +507,7 @@ $ ./<rust-binary>
 
 <details>
   <summary>
-    <span id="c#" style="font-size: 1.25em">C#</span>
+    <span id="c#" style="font-size: 20px">C#</span>
   </summary>
 
 Build the docker image for C#:
@@ -657,7 +657,7 @@ $ dotnet run --project=<project-path>
 
 <details>
   <summary>
-    <span id="java" style="font-size: 1.25em">Java</span>
+    <span id="java" style="font-size: 20px">Java</span>
   </summary>
 
 Build the docker image for Java:
@@ -797,7 +797,7 @@ $ java Main # without .class extension
 
 <details>
   <summary>
-    <span id="php" style="font-size: 1.25em">PHP</span>
+    <span id="php" style="font-size: 20px">PHP</span>
   </summary>
 
 Build the docker image for PHP:
@@ -940,7 +940,7 @@ $ composer remove [package1, package2 ...]
 
 <details>
   <summary>
-    <span id="c++" style="font-size: 1.25em">C++</span>
+    <span id="c++" style="font-size: 20px">C++</span>
   </summary>
 
 Build the docker image for C++:
