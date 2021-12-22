@@ -8,10 +8,10 @@ Language List:
 - [x] [TypeScript (Node.js)](#typescript)
 - [x] [Go](#go)
 - [x] [Rust](#rust)
-- [x] [C#](#c#)
+- [x] [C#](#csharp)
 - [x] [Java](#java)
 - [x] [PHP](#php)
-- [x] [C++](#c++)
+- [x] [C++](#cpp)
 
 ## Set Up Development Environment via `Docker`
 
@@ -21,7 +21,7 @@ Language List:
 
 > This issue occured while running the docker container as `root`.
 
-If you create some directories or files inside docker container, they may be owned by `root`.
+If you create some files inside docker container, they may be owned by `root`.
 
 To solve the permission problem, please run:
 
@@ -35,7 +35,7 @@ $ chown -R 1000:1000 ./
 
 <details>
   <summary>
-    <span id="python" style="font-size: 20px">Python</span>
+    <span id="python">Python</span>
   </summary>
 
 Build the docker image for Python:
@@ -49,12 +49,12 @@ Run and get into the Python container:
 
 ```bash
 $ sudo docker run \
-    --rm \ # remove the container after exit it
-    -it \ # get into the container
-    -w "/opt/leetcode" \ # set working dir
-    -v "<python-dir>:/opt/leetcode" \ # mount host dir/files to container inside
-    leetcode/python:latest \ # Python image
-    /bin/bash # run the command after get into the container
+  --rm \ # remove the container after exit it
+  -it \ # get into the container
+  -w "/opt/leetcode" \ # set working dir
+  -v "<python-dir>:/opt/leetcode" \ # mount host dir/files to container inside
+  leetcode/python:latest \ # Python image
+  /bin/bash # run the command after get into the container
 ```
 
 Run the tests:
@@ -70,8 +70,8 @@ $ python -m unittest -v
 # `./src/sum.py`
 
 class Sum:
-    def do(self, a: int, b: int) -> int:
-        return a + b
+  def do(self, a: int, b: int) -> int:
+    return a + b
 ```
 
 > And you can have a Python test like this:
@@ -83,18 +83,18 @@ import unittest
 from src.sum import Sum
 
 class SumTest(unittest.TestCase):
-    _sum = Sum()
+  _sum = Sum()
 
-    def process_test_case(self, _input1: int, _input2: int, expected: int):
-        actual = self._sum.do(_input1, _input2)
-        self.assertEqual(actual, expected)
+  def process_test_case(self, _input1: int, _input2: int, expected: int):
+    actual = self._sum.do(_input1, _input2)
+    self.assertEqual(actual, expected)
 
-    def test_sum_of_two_given_numbers(self):
-        _input1 = 1
-        _input2 = 4
-        expected = 5
+  def test_sum_of_two_given_numbers(self):
+    _input1 = 1
+    _input2 = 4
+    expected = 5
 
-        self.process_test_case(_input1, _input2, expected)
+    self.process_test_case(_input1, _input2, expected)
 ```
 
 > Finally, the project structure should be like this:
@@ -124,7 +124,7 @@ $ python <python-src>
 
 <details>
   <summary>
-    <span id="typescript" style="font-size: 20px">TypeScript</span>
+    <span id="typescript">TypeScript</span>
   </summary>
 
 Build the docker image for Node.js:
@@ -138,12 +138,12 @@ Run and get into the Node.js container:
 
 ```bash
 $ sudo docker run \
-    --rm \ # remove the container after exit it
-    -it \ # get into the container
-    -w "/opt/leetcode" # set working dir
-    -v "<nodejs-dir>:/opt/leetcode" # mount host dir/files to container inside
-    leetcode/nodejs:latest \ # Node.js image
-    /bin/bash # run the command after get into the container
+  --rm \ # remove the container after exit it
+  -it \ # get into the container
+  -w "/opt/leetcode" # set working dir
+  -v "<nodejs-dir>:/opt/leetcode" # mount host dir/files to container inside
+  leetcode/nodejs:latest \ # Node.js image
+  /bin/bash # run the command after get into the container
 ```
 
 Compile source code:
@@ -172,9 +172,9 @@ $ npm init -y
 // `./src/sum.ts`
 
 class Sum {
-    public do(a: number, b: number): number {
-        return a + b;
-    }
+  public do(a: number, b: number): number {
+    return a + b;
+  }
 }
 
 export { Sum };
@@ -189,16 +189,16 @@ const { Sum } = require('../src/sum');
 const sum = new Sum();
 
 const processTestCase = (input1, input2, expected) => {
-    const actual = sum.do(input1, input2);
-    expect(actual).toBe(expected);
+  const actual = sum.do(input1, input2);
+  expect(actual).toBe(expected);
 }
 
 test("Test: sum of two given numbers", () => {
-    const input1 = 1;
-    const input2 = 4;
-    const expected = 5;
+  const input1 = 1;
+  const input2 = 4;
+  const expected = 5;
 
-    processTestCase(input1, input2, expected);
+  processTestCase(input1, input2, expected);
 })
 ```
 
@@ -236,7 +236,7 @@ $ npm install
 > Install project dependencies:
 
 ```bash
-$ npm install [package1, package2 ...]
+$ npm install --save [package1, package2 ...]
 ```
 
 > Install project dev-dependencies:
@@ -266,7 +266,7 @@ $ node <compiled-js-file>
 
 <details>
   <summary>
-    <span id="go" style="font-size: 20px">Go</span>
+    <span id="go">Go</span>
   </summary>
 
 Build the docker image for Go:
@@ -280,12 +280,12 @@ Run and get into the Go container:
 
 ```bash
 $ sudo docker run \
-    --rm \ # remove the container after exit it
-    -it \ # get into the container
-    -w "/opt/leetcode" \ # set working dir
-    -v "<golang-dir>:/opt/leetcode" \ # mount host dir/files to container inside
-    leetcode/golang:latest \ # Go image
-    /bin/bash # run the command after get into the container
+  --rm \ # remove the container after exit it
+  -it \ # get into the container
+  -w "/opt/leetcode" \ # set working dir
+  -v "<golang-dir>:/opt/leetcode" \ # mount host dir/files to container inside
+  leetcode/golang:latest \ # Go image
+  /bin/bash # run the command after get into the container
 ```
 
 Run the tests:
@@ -310,7 +310,7 @@ package solution
 
 // first letter must be `capital` to make it `public` (be available for other go files)
 func Sum(a int, b int) int {
-    return a + b
+  return a + b
 }
 ```
 
@@ -322,23 +322,23 @@ func Sum(a int, b int) int {
 package tests
 
 import (
-    "testing"
-    "github.com/stretchr/testify/assert"
-    "<project-name>/src" // <----- follow the project structure
+  "testing"
+  "github.com/stretchr/testify/assert"
+  "<project-name>/src" // <----- follow the project structure
 )
 
 func processTestCase(t *testing.T, input1 int, input2 int, expected int) {
-    actual := solution.Sum(input1, input2)
-    assert.Equal(t, expected, actual)
+  actual := solution.Sum(input1, input2)
+  assert.Equal(t, expected, actual)
 }
 
 // first letter must be `capital` to make it can be found by `go-test`
 func Test_sum_of_two_given_numbers(t *testing.T) {
-    input1 := 1
-    input2 := 4
-    expected := 5
+  input1 := 1
+  input2 := 4
+  expected := 5
 
-    processTestCase(t, input1, input2, expected)
+  processTestCase(t, input1, input2, expected)
 }
 ```
 
@@ -369,7 +369,7 @@ $ go run <go-src>
 
 <details>
   <summary>
-    <span id="rust" style="font-size: 20px">Rust</span>
+    <span id="rust">Rust</span>
   </summary>
 
 Build the docker image for Rust:
@@ -383,12 +383,12 @@ Run and get into the Rust container:
 
 ```bash
 $ sudo docker run \
-    --rm \ # remove the container after exit it
-    -it \ # get into the container
-    -w "/opt/leetcode" \ # set working dir
-    -v "<rust-dir>:/opt/leetcode" \ # mount host dir/files to container inside
-    leetcode/rust:latest \ # Rust image
-    /bin/bash # run the command after get into the container
+  --rm \ # remove the container after exit it
+  -it \ # get into the container
+  -w "/opt/leetcode" \ # set working dir
+  -v "<rust-dir>:/opt/leetcode" \ # mount host dir/files to container inside
+  leetcode/rust:latest \ # Rust image
+  /bin/bash # run the command after get into the container
 ```
 
 Run the tests:
@@ -400,7 +400,7 @@ $ cargo test
 > Init the project via `Cargo` in `./`:
 
 ```bash
-$ cargo init
+$ cargo init --name <project-name>
 ```
 
 > Create a new Rust project via `Cargo`:
@@ -433,18 +433,18 @@ edition = "2021"
 > You can have a Rust src like this:
 
 ```rust
-// `./src/lib.rs` # <----- not `./src/main.rs`!!
+// `./src/lib.rs` # <----- NOT `./src/main.rs`!! And it MUST BE named with `lib.rs` for cargo-test
 
 pub struct Sum { }
 
 impl Sum {
-    pub fn new() -> Sum {
-        return Sum { };
-    }
+  pub fn new() -> Sum {
+    return Sum { };
+  }
 
-    pub fn _do(&self ,a: &i32, b: &i32) -> i32 {
-        return a + b;
-    }
+  pub fn _do(&self, a: &i32, b: &i32) -> i32 {
+    return a + b;
+  }
 }
 ```
 
@@ -456,18 +456,18 @@ impl Sum {
 use <project-name>::Sum;
 
 fn process_test_case(input1: &i32, input2: &i32, expected: &i32) {
-    let sum: Sum = Sum::new();
-    let actual: i32 = sum._do(input1, input2);
-    assert_eq!(&actual, expected);
+  let sum: Sum = Sum::new();
+  let actual: i32 = sum._do(input1, input2);
+  assert_eq!(&actual, expected);
 }
 
 #[test]
 fn sum_of_two_given_numbers() {
-    let input1: i32 = 1;
-    let input2: i32 = 4;
-    let expected: i32 = 5;
+  let input1: i32 = 1;
+  let input2: i32 = 4;
+  let expected: i32 = 5;
 
-    process_test_case(&input1, &input2, &expected);
+  process_test_case(&input1, &input2, &expected);
 }
 ```
 
@@ -499,7 +499,7 @@ $ ./<rust-binary>
 
 <details>
   <summary>
-    <span id="c#" style="font-size: 20px">C#</span>
+    <span id="csharp" style="font-size: 20px">C#</span>
   </summary>
 
 Build the docker image for C#:
@@ -513,12 +513,12 @@ Run and get into the C# container:
 
 ```bash
 $ sudo docker run \
-    --rm \ # remove the container after exit it
-    -it \ # get into the container
-    -w "/opt/leetcode" \ # set working dir
-    -v "<csharp-dir>:/opt/leetcode" \ # mount host dir/files to container inside
-    leetcode/csharp:latest \ # C# image
-    /bin/bash # run the command after get into the container
+  --rm \ # remove the container after exit it
+  -it \ # get into the container
+  -w "/opt/leetcode" \ # set working dir
+  -v "<csharp-dir>:/opt/leetcode" \ # mount host dir/files to container inside
+  leetcode/csharp:latest \ # C# image
+  /bin/bash # run the command after get into the container
 ```
 
 Run the tests:
@@ -564,17 +564,17 @@ $ rm -f ./tests/UnitTest1.cs
 
 namespace Leetcode
 {
-    public class Sum
+  public class Sum
+  {
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-        }
-
-        public int Do(int a, int b)
-        {
-            return a + b;
-        }
     }
+
+    public int Do(int a, int b)
+    {
+      return a + b;
+    }
+  }
 }
 ```
 
@@ -588,27 +588,27 @@ using Leetcode;
 
 namespace LeetcodeTest
 {
-    [TestClass]
-    public class SumTest
+  [TestClass]
+  public class SumTest
+  {
+    Sum sum = new Sum();
+
+    private void ProcessTestCase(int input1, int input2, int expected)
     {
-        Sum sum = new Sum();
-
-        private void ProcessTestCase(int input1, int input2, int expected)
-        {
-            int actual = sum.Do(input1, input2);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void have_longest_common_prefix()
-        {
-            int input1 = 1;
-            int input2 = 4;
-            int expected = 5;
-
-            ProcessTestCase(input1, input2, expected);
-        }
+      int actual = sum.Do(input1, input2);
+      Assert.AreEqual(expected, actual);
     }
+
+    [TestMethod]
+    public void have_longest_common_prefix()
+    {
+      int input1 = 1;
+      int input2 = 4;
+      int expected = 5;
+
+      ProcessTestCase(input1, input2, expected);
+    }
+  }
 }
 ```
 
@@ -663,12 +663,12 @@ Run and get into the Java container:
 
 ```bash
 $ sudo docker run \
-    --rm \ # remove the container after exit it
-    -it \ # get into the container
-    -w "/opt/leetcode" \ # set working dir
-    -v "<java-dir>:/opt/leetcode" \ # mount host dir/files to container inside
-    leetcode/java:latest \ # Java image
-    /bin/bash # run the command after get into the container
+  --rm \ # remove the container after exit it
+  -it \ # get into the container
+  -w "/opt/leetcode" \ # set working dir
+  -v "<java-dir>:/opt/leetcode" \ # mount host dir/files to container inside
+  leetcode/java:latest \ # Java image
+  /bin/bash # run the command after get into the container
 ```
 
 Run the tests:
@@ -681,11 +681,11 @@ $ mvn test
 
 ```bash
 $ mvn archetype:generate \
-    -DgroupId=<com.company.app> \ # it will be project structure
-    -DartifactId=<project-name> \
-    -DarchetypeArtifactId=maven-archetype-quickstart \ # Maven template
-    -DarchetypeVersion=1.4 \ Maven template version
-    -DinteractiveMode=false
+  -DgroupId=<com.company.app> \ # it will be project structure
+  -DartifactId=<project-name> \
+  -DarchetypeArtifactId=maven-archetype-quickstart \ # Maven template
+  -DarchetypeVersion=1.4 \ Maven template version
+  -DinteractiveMode=false
 ```
 
 > You can have a Java src like this:
@@ -697,16 +697,16 @@ package <com.company.app>;
 
 public class App
 {
-    public static void main( String[] args )
-    {
-    }
+  public static void main( String[] args )
+  {
+  }
 }
 
 class Sum
 {
-    public int _do(int a, int b) {
-        return a + b;
-    }
+  public int _do(int a, int b) {
+    return a + b;
+  }
 }
 ```
 
@@ -722,21 +722,21 @@ import org.junit.Test;
 
 public class AppTest
 {
-    Sum sum = new Sum();
+  Sum sum = new Sum();
 
-    private void process_test_case(int input1, int input2, int expected) {
-        int actual = sum._do(input1, input2);
-        assertEquals(expected, actual);
-    }
+  private void process_test_case(int input1, int input2, int expected) {
+    int actual = sum._do(input1, input2);
+    assertEquals(expected, actual);
+  }
 
-    @Test
-    public void sum_of_two_given_numbers() {
-        int input1 = 1;
-        int input2 = 4;
-        int expected = 5;
+  @Test
+  public void sum_of_two_given_numbers() {
+    int input1 = 1;
+    int input2 = 4;
+    int expected = 5;
 
-        process_test_case(input1, input2, expected);
-    }
+    process_test_case(input1, input2, expected);
+  }
 }
 ```
 
@@ -803,12 +803,12 @@ Run and get into the PHP container:
 
 ```bash
 $ sudo docker run \
-    --rm \ # remove the container after exit it
-    -it \ # get into the container
-    -w "/opt/leetcode" \ # set working dir
-    -v "<php-dir>:/opt/leetcode" \ # mount host dir/files to container inside
-    leetcode/php:latest \ # PHP image
-    /bin/bash # run the command after get into the container
+  --rm \ # remove the container after exit it
+  -it \ # get into the container
+  -w "/opt/leetcode" \ # set working dir
+  -v "<php-dir>:/opt/leetcode" \ # mount host dir/files to container inside
+  leetcode/php:latest \ # PHP image
+  /bin/bash # run the command after get into the container
 ```
 
 Generating `./vendor/autoload.php` to autoloading PHP classes:
@@ -833,13 +833,13 @@ $ composer init # by answering interactive questions
 
 ```json
 {
-    "name": "<vendor>/<project-name>",
-    "autoload": {
-        "psr-4": {
-            "<Vendor>\\<Project-name>\\": "src/"
-        }
-    },
-    "require": {}
+  "name": "<vendor>/<project-name>",
+  "autoload": {
+    "psr-4": {
+      "<Vendor>\\<Project-name>\\": "src/"
+    }
+  },
+  "require": {}
 }
 
 ```
@@ -855,9 +855,9 @@ namespace <Vendor>\<Project-name>;
 
 final class Sum # <----- class name need to match the file name
 {
-    final static function do(int $a, int $b): int {
-        return $a + $b;
-    }
+  final static function do(int $a, int $b): int {
+    return $a + $b;
+  }
 }
 ```
 
@@ -875,20 +875,20 @@ use <Vendor>\<Project-name>\Sum;
 
 final class SumTest extends TestCase
 {
-    public function process_test_case(int $input1, int $input2, int $expected): void
-    {
-        $actual = Sum::do($input1, $input2);
-        $this->assertEquals($expected, $actual);
-    }
+  public function process_test_case(int $input1, int $input2, int $expected): void
+  {
+    $actual = Sum::do($input1, $input2);
+    $this->assertEquals($expected, $actual);
+  }
 
-    public function test_sum_of_two_given_numbers(): void # must start with `test*()`
-    {
-        $input1 = 1;
-        $input2 = 4;
-        $expected = 5;
+  public function test_sum_of_two_given_numbers(): void # must start with `test*()`
+  {
+    $input1 = 1;
+    $input2 = 4;
+    $expected = 5;
 
-        $this->process_test_case($input1, $input2, $expected);
-    }
+    $this->process_test_case($input1, $input2, $expected);
+  }
 }
 ```
 
@@ -932,7 +932,7 @@ $ composer remove [package1, package2 ...]
 
 <details>
   <summary>
-    <span id="c++" style="font-size: 20px">C++</span>
+    <span id="cpp" style="font-size: 20px">C++</span>
   </summary>
 
 Build the docker image for C++:
@@ -946,12 +946,12 @@ Run and get into the C++ container:
 
 ```bash
 $ sudo docker run \
-    --rm \ # remove the container after exit it
-    -it \ # get into the container
-    -w "/opt/leetcode" \ # set working dir
-    -v "<cpp-dir>:/opt/leetcode" \ # mount host dir/files to container inside
-    leetcode/cpp:latest \ # C++ image
-    /bin/bash # run the command after get into the container
+  --rm \ # remove the container after exit it
+  -it \ # get into the container
+  -w "/opt/leetcode" \ # set working dir
+  -v "<cpp-dir>:/opt/leetcode" \ # mount host dir/files to container inside
+  leetcode/cpp:latest \ # C++ image
+  /bin/bash # run the command after get into the container
 ```
 
 Build the whole project via `CMake`:
@@ -977,9 +977,9 @@ $ ./build/<test-binary>
 
 class Sum {
 public:
-    int _do(int a, int b) {
-        return a + b;
-    }
+  int _do(int a, int b) {
+    return a + b;
+  }
 };
 
 /** DO NOT declare main function, it may make GoogleTest can't find the Tests **/
@@ -997,20 +997,20 @@ public:
 #include "../src/sum.h"
 
 void processTestCase(int input1, int input2, int expected) {
-    Sum* sum_ptr = new Sum();
+  Sum* sum_ptr = new Sum();
 
-    // since `sum_ptr` is a pointer which points to Sum class
-    // just use `->` to access the class member
-    int actual = sum_ptr->_do(input1, input2);
-    ASSERT_EQ(actual, expected);
+  // since `sum_ptr` is a pointer which points to Sum class
+  // just use `->` to access the class member
+  int actual = sum_ptr->_do(input1, input2);
+  ASSERT_EQ(actual, expected);
 }
 
 TEST(SumTest, SumOfTwoGivenNumbers) {
-    int input1 = 1;
-    int input2 = 4;
-    int expected = 5;
+  int input1 = 1;
+  int input2 = 4;
+  int expected = 5;
 
-    processTestCase(input1, input2, expected);
+  processTestCase(input1, input2, expected);
 }
 ```
 
@@ -1030,8 +1030,8 @@ include(FetchContent)
 
 # get GoogleTest from github as CMake project dependency
 FetchContent_Declare(
-    googletest
-    URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+  googletest
+  URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
 )
 FetchContent_MakeAvailable(googletest)
 
@@ -1040,14 +1040,14 @@ enable_testing()
 
 # declare the C++ test binary we want to build (`<test-binary>`)
 add_executable(
-    <test-binary>
-    <test-src-path>
+  <test-binary>
+  <test-src-path>
 )
 
 # links `<test-binary>` with GoogleTest entry point (`gtest_main`)
 target_link_libraries(
-    <test-binary>
-    gtest_main
+  <test-binary>
+  gtest_main
 )
 
 # to make CMake Test Runner (`ctest`) to find the tests included in `test-binary`
