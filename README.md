@@ -4,14 +4,14 @@ This project is just for me to practice various programming languages.
 
 Language List:
 
-- [x] Python
-- [x] TypeScript (Node.js)
-- [x] Go
-- [x] Rust
-- [x] C#
-- [x] Java
-- [x] PHP
-- [x] C++
+- [x] [Python](#python)
+- [x] [TypeScript (Node.js)](#typescript)
+- [x] [Go](#go)
+- [x] [Rust](#rust)
+- [x] [C#](#c#)
+- [x] [Java](#java)
+- [x] [PHP](#php)
+- [x] [C++](#c++)
 
 ## Set Up Development Environment via `Docker`
 
@@ -33,7 +33,10 @@ $ sudo chown -R 1000:1000 ./
 $ chown -R 1000:1000 ./
 ```
 
-### Python
+<details>
+  <summary>
+    <h3 id="python" style="display: inline">Python<h3>
+  </summary>
 
 Build the docker image for Python:
 
@@ -125,8 +128,12 @@ $ pip install [module1, module2 ...]
 ```bash
 $ python <python-src>
 ```
+</details>
 
-### TypeScript (Node.js)
+<details>
+  <summary>
+    <h3 id="typescript" style="display: inline">TypeScript<h3>
+  </summary>
 
 Build the docker image for Node.js:
 
@@ -263,8 +270,12 @@ $ npm run <custom-script>
 ```bash
 $ node <compiled-js-file>
 ```
+</details>
 
-### Go
+<details>
+  <summary>
+    <h3 id="go" style="display: inline">Go</h3>
+  </summary>
 
 Build the docker image for Go:
 
@@ -362,8 +373,12 @@ $ go mod tidy
 ```bash
 $ go run <go-src>
 ```
+</details>
 
-### Rust
+<details>
+  <summary>
+    <h3 id="rust" style="display: inline">Rust<h3>
+  </summary>
 
 Build the docker image for Rust:
 
@@ -488,8 +503,12 @@ $ rustc <rust-src>
 ```bash
 $ ./<rust-binary>
 ```
+</details>
 
-### C#
+<details>
+  <summary>
+    <h3 id="c#" style="display: inline">C#</h3>
+  </summary>
 
 Build the docker image for C#:
 
@@ -634,8 +653,12 @@ $ dotnet run
 # or use `--project` flag to specify project path
 $ dotnet run --project=<project-path>
 ```
+</details>
 
-### Java
+<details>
+  <summary>
+    <h3 id="java" style="display: inline">Java</h3>
+  </summary>
 
 Build the docker image for Java:
 
@@ -770,8 +793,12 @@ $ javac <java-src>
 ```bash
 $ java Main # without .class extension
 ```
+</details>
 
-### PHP
+<details>
+  <summary>
+    <h3 id="php" style="display: inline">PHP</h3>
+  </summary>
 
 Build the docker image for PHP:
 
@@ -909,8 +936,12 @@ $ composer require --dev [package1, package2 ...]
 ```bash
 $ composer remove [package1, package2 ...]
 ```
+</details>
 
-### C++
+<details>
+  <summary>
+    <h3 id="c++" style="display: inline">C++</h3>
+  </summary>
 
 Build the docker image for C++:
 
@@ -1058,3 +1089,4 @@ $ clang++ -o <cpp-binary> <cpp-src>
 ```bash
 $ ./<cpp-binary>
 ```
+</details>
