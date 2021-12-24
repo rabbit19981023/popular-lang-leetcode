@@ -1,6 +1,8 @@
 FROM php:8.0-fpm as php
 
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get update
+RUN apt-get install -y vim
+COPY ./vim.config /root/.vimrc
 
 # install composer (PHP Packages Manager)
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \

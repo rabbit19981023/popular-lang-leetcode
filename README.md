@@ -499,7 +499,7 @@ $ ./<rust-binary>
 
 <details>
   <summary>
-    <span id="csharp" style="font-size: 20px">C#</span>
+    <span id="csharp">C#</span>
   </summary>
 
 Build the docker image for C#:
@@ -536,7 +536,7 @@ $ dotnet new sln
 > Init a `console` project in `./src`:
 
 ```bash
-$ dotnet new console -o src/
+$ dotnet new console -o ./src
 ```
 
 > Remove the default entry program:
@@ -548,7 +548,7 @@ $ rm -f ./src/Program.cs
 > Init a `mstest` project in `./tests`:
 
 ```bash
-$ dotnet new mstest -o tests/
+$ dotnet new mstest -o ./tests
 ```
 
 > Remove the default test:
@@ -649,7 +649,7 @@ $ dotnet run --project=<project-path>
 
 <details>
   <summary>
-    <span id="java" style="font-size: 20px">Java</span>
+    <span id="java">Java</span>
   </summary>
 
 Build the docker image for Java:
@@ -691,16 +691,9 @@ $ mvn archetype:generate \
 > You can have a Java src like this:
 
 ```java
-// `./<project-name>/src/main/java/<com>/<company>/<app>/App.java`
+// `./<project-name>/src/main/java/<com>/<company>/<app>/Sum.java`
 
-package <com.company.app>;
-
-public class App
-{
-  public static void main( String[] args )
-  {
-  }
-}
+package <com.company.app>; // follows the maven project structure
 
 class Sum
 {
@@ -713,18 +706,18 @@ class Sum
 > And you can have a Java test like this:
 
 ```java
-// `./<project-name>/src/test/java/<com>/<company>/<app>/AppTest.java`
+// `./<project-name>/src/test/java/<com>/<company>/<app>/SumTest.java`
 
 package <com.company.app>; // this package include class: Sum
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class AppTest
+public class SumTest
 {
   Sum sum = new Sum();
 
-  private void process_test_case(int input1, int input2, int expected) {
+  private void processTestCase(int input1, int input2, int expected) {
     int actual = sum._do(input1, input2);
     assertEquals(expected, actual);
   }
@@ -735,7 +728,7 @@ public class AppTest
     int input2 = 4;
     int expected = 5;
 
-    process_test_case(input1, input2, expected);
+    processTestCase(input1, input2, expected);
   }
 }
 ```
@@ -750,13 +743,15 @@ public class AppTest
 ---------- <com>/
 ------------ <company>/
 -------------- <app>/
----------------- App.java
+---------------- App.java # default file which can be ignored
+---------------- Sum.java
 ------ test/
 -------- java/
 ---------- <com>/
 ------------ <company>/
 -------------- <app>/
----------------- AppTest.java
+---------------- AppTest.java # default file which can be ignored
+---------------- SumTest.java
 ---- pom.xml
 ```
 
@@ -789,7 +784,7 @@ $ java Main # without .class extension
 
 <details>
   <summary>
-    <span id="php" style="font-size: 20px">PHP</span>
+    <span id="php">PHP</span>
   </summary>
 
 Build the docker image for PHP:
@@ -855,7 +850,8 @@ namespace <Vendor>\<Project-name>;
 
 final class Sum # <----- class name need to match the file name
 {
-  final static function do(int $a, int $b): int {
+  final public function _do(int $a, int $b): int
+  {
     return $a + $b;
   }
 }
@@ -875,9 +871,10 @@ use <Vendor>\<Project-name>\Sum;
 
 final class SumTest extends TestCase
 {
-  public function process_test_case(int $input1, int $input2, int $expected): void
+  private function processTestCase(int $input1, int $input2, int $expected): void
   {
-    $actual = Sum::do($input1, $input2);
+    $sum = new Sum();
+    $actual = $sum->_do($input1, $input2);
     $this->assertEquals($expected, $actual);
   }
 
@@ -887,7 +884,7 @@ final class SumTest extends TestCase
     $input2 = 4;
     $expected = 5;
 
-    $this->process_test_case($input1, $input2, $expected);
+    $this->processTestCase($input1, $input2, $expected);
   }
 }
 ```
@@ -932,7 +929,7 @@ $ composer remove [package1, package2 ...]
 
 <details>
   <summary>
-    <span id="cpp" style="font-size: 20px">C++</span>
+    <span id="cpp">C++</span>
   </summary>
 
 Build the docker image for C++:
@@ -958,7 +955,7 @@ Build the whole project via `CMake`:
 
 ```bash
 $ cmake -S ./ -B build # generating cmake config files into ./build
-$ cmake --build build # compile the whole project into ./build
+$ cmake --build ./build # compile the whole project into ./build
 ```
 
 Run the tests:
@@ -991,17 +988,19 @@ public:
 > And you can have a C++ test like this:
 
 ```cpp
-// `./tests/sum_test.cc`
+// `./tests/sum_test.cpp`
 
 #include <gtest/gtest.h>
 #include "../src/sum.h"
 
-void processTestCase(int input1, int input2, int expected) {
-  Sum* sum_ptr = new Sum();
+Sum* sum_ptr = new Sum();
+Sum sum = *sum_ptr;
 
+void processTestCase(int input1, int input2, int expected) {
   // since `sum_ptr` is a pointer which points to Sum class
   // just use `->` to access the class member
   int actual = sum_ptr->_do(input1, input2);
+  // int actual sum._do(input1, input2) # <- this also works
   ASSERT_EQ(actual, expected);
 }
 
@@ -1062,7 +1061,7 @@ gtest_discover_tests(<test-binary>)
 ---- src/
 ------ sum.h
 ---- tests/
------- sum_test.cc
+------ sum_test.cpp
 ---- CMakeLists.txt
 ```
 
