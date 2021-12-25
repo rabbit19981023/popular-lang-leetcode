@@ -1,3 +1,7 @@
+# ---- Vim ---- #
+# cached files
+*.swp
+
 # ---- Python ---- #
 # cached files
 __pycache__/
