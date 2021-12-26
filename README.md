@@ -62,7 +62,7 @@ Run the tests:
 ```bash
 $ cd <python-dir>   # ATTENTION: <python-dir> is your python project root
 $ python -m unittest -v
-````
+```
 
 > You can have a Python src like this:
 
@@ -85,16 +85,18 @@ from src.sum import Sum
 class SumTest(unittest.TestCase):
   _sum = Sum()
 
-  def process_test_case(self, _input1: int, _input2: int, expected: int):
-    actual = self._sum.do(_input1, _input2)
+  def process_test_case(self, inputs: dict["a": int, "b": int], expected: int):
+    actual = self._sum.do(inputs["a"], inputs["b"])
     self.assertEqual(actual, expected)
 
   def test_sum_of_two_given_numbers(self):
-    _input1 = 1
-    _input2 = 4
+    inputs = {
+      "a": 1,
+      "b": 4
+    }
     expected = 5
 
-    self.process_test_case(_input1, _input2, expected)
+    self.process_test_case(inputs, expected)
 ```
 
 > Finally, the project structure should be like this:
@@ -173,11 +175,11 @@ $ npm init -y
 
 class Sum {
   public do(a: number, b: number): number {
-    return a + b;
+    return a + b
   }
 }
 
-export { Sum };
+export { Sum }
 ```
 
 > And you can have a JavaScript test like this:
@@ -185,20 +187,22 @@ export { Sum };
 ```javascript
 // `./tests/sum.test.js`
 
-const { Sum } = require('../src/sum');
-const sum = new Sum();
+const { Sum } = require('../src/sum')
+const sum = new Sum()
 
-const processTestCase = (input1, input2, expected) => {
-  const actual = sum.do(input1, input2);
-  expect(actual).toBe(expected);
+const processTestCase = (inputs, expected) => {
+  const actual = sum.do(inputs.a, inputs.b)
+  expect(actual).toBe(expected)
 }
 
 test("Test: sum of two given numbers", () => {
-  const input1 = 1;
-  const input2 = 4;
-  const expected = 5;
+  const inputs = {
+    a: 1,
+    b: 4
+  }
+  const expected = 5
 
-  processTestCase(input1, input2, expected);
+  processTestCase(inputs, expected)
 })
 ```
 
@@ -211,7 +215,7 @@ const config = {
   verbose: true,
 };
 
-module.exports = config;
+module.exports = config
 ```
 
 > Finally, the project structure should be like this:
@@ -327,18 +331,25 @@ import (
   "<project-name>/src" // <----- follow the project structure
 )
 
-func processTestCase(t *testing.T, input1 int, input2 int, expected int) {
-  actual := solution.Sum(input1, input2)
+type Inputs struct {
+  a   int
+  b   int
+}
+
+func processTestCase(t *testing.T, inputs Inputs, expected int) {
+  actual := solution.Sum(inputs.a, inputs.b)
   assert.Equal(t, expected, actual)
 }
 
 // first letter must be `capital` to make it can be found by `go-test`
 func Test_sum_of_two_given_numbers(t *testing.T) {
-  input1 := 1
-  input2 := 4
+  var inputs Inputs = Inputs {
+    a: 1,
+    b: 4,
+  }
   expected := 5
 
-  processTestCase(t, input1, input2, expected)
+  processTestCase(t, inputs, expected)
 }
 ```
 
@@ -455,19 +466,26 @@ impl Sum {
 
 use <project-name>::Sum;
 
-fn process_test_case(input1: &i32, input2: &i32, expected: &i32) {
+struct Inputs {
+  a: i32,
+  b: i32
+}
+
+fn process_test_case(inputs: &Inputs, expected: &i32) {
   let sum: Sum = Sum::new();
-  let actual: i32 = sum._do(input1, input2);
+  let actual: i32 = sum._do(&inputs.a, &inputs.b);
   assert_eq!(&actual, expected);
 }
 
 #[test]
 fn sum_of_two_given_numbers() {
-  let input1: i32 = 1;
-  let input2: i32 = 4;
+  let inputs: Inputs = Inputs {
+    a: 1,
+    b: 4
+  };
   let expected: i32 = 5;
 
-  process_test_case(&input1, &input2, &expected);
+  process_test_case(&inputs, &expected);
 }
 ```
 
@@ -557,6 +575,18 @@ $ dotnet new mstest -o ./tests
 $ rm -f ./tests/UnitTest1.cs
 ```
 
+> Add `console` project & `mstest` project into `solution`:
+
+```bash
+$ dotnet sln add ./src/src.csproj ./tests/tests.csproj
+```
+
+> In `tests.csproj`, we add a reference project `src.csproj` into it, to make source code can be invoked in tests:
+
+```bash
+$ dotnet add ./tests/tests.csproj reference ./src/src.csproj
+```
+
 > You can have a C# src like this:
 
 ```csharp
@@ -588,25 +618,33 @@ using Leetcode;
 
 namespace LeetcodeTest
 {
+  public struct Inputs
+  {
+    public int A;
+    public int B;
+  }
+
   [TestClass]
   public class SumTest
   {
     Sum sum = new Sum();
 
-    private void ProcessTestCase(int input1, int input2, int expected)
+    private void ProcessTestCase(Inputs inputs, int expected)
     {
-      int actual = sum.Do(input1, input2);
+      int actual = sum.Do(inputs.A, inputs.B);
       Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
-    public void have_longest_common_prefix()
+    public void sum_of_two_given_numbers()
     {
-      int input1 = 1;
-      int input2 = 4;
+      Inputs inputs = new Inputs() {
+        A = 1,
+        B = 4
+      };
       int expected = 5;
 
-      ProcessTestCase(input1, input2, expected);
+      ProcessTestCase(inputs, expected);
     }
   }
 }
@@ -623,18 +661,6 @@ namespace LeetcodeTest
 ---- tests/
 ------ SumTest.cs
 ------ tests.csproj
-```
-
-> Add `console` project & `mstest` project into `solution`:
-
-```bash
-$ dotnet sln add ./src/src.csproj ./tests/tests.csproj
-```
-
-> In `tests.csproj`, we add a reference project `src.csproj` into it, to make source code can be invoked in tests:
-
-```bash
-$ dotnet add ./tests/tests.csproj reference ./src/src.csproj
 ```
 
 > Run the C# code:
@@ -695,7 +721,7 @@ $ mvn archetype:generate \
 
 package <com.company.app>; // follows the maven project structure
 
-class Sum
+public class Sum
 {
   public int _do(int a, int b) {
     return a + b;
@@ -715,20 +741,29 @@ import org.junit.Test;
 
 public class SumTest
 {
+  private class Inputs {
+    int a;
+    int b;
+  }
+
   Sum sum = new Sum();
 
-  private void processTestCase(int input1, int input2, int expected) {
-    int actual = sum._do(input1, input2);
+  private void processTestCase(Inputs inputs, int expected) {
+    int actual = sum._do(inputs.a, inputs.b);
     assertEquals(expected, actual);
   }
 
   @Test
   public void sum_of_two_given_numbers() {
-    int input1 = 1;
-    int input2 = 4;
+    Inputs inputs = new Inputs() {
+      {
+        a = 1;
+        b = 4;
+      }
+    };
     int expected = 5;
 
-    processTestCase(input1, input2, expected);
+    processTestCase(inputs, expected);
   }
 }
 ```
@@ -769,13 +804,19 @@ $ cd ./<project-name>
 $ java -cp ./target/<project-name>-1.0-SNAPSHOT.jar <com.company.app>.App
 ```
 
+> Run the Java source code:
+
+```bash
+$ java <java-src>
+```
+
 > Compile the Java source code:
 
 ```bash
 $ javac <java-src>
 ```
 
-> Run the Java binary executable Class (`.class` file):
+> Run the Java binary executable Class (`*.class` files):
 
 ```bash
 $ java Main # without .class extension
@@ -871,20 +912,22 @@ use <Vendor>\<Project-name>\Sum;
 
 final class SumTest extends TestCase
 {
-  private function processTestCase(int $input1, int $input2, int $expected): void
+  private function processTestCase(array $inputs, int $expected): void
   {
     $sum = new Sum();
-    $actual = $sum->_do($input1, $input2);
+    $actual = $sum->_do($inputs["a"], $inputs["b"]);
     $this->assertEquals($expected, $actual);
   }
 
   public function test_sum_of_two_given_numbers(): void # must start with `test*()`
   {
-    $input1 = 1;
-    $input2 = 4;
+    $inputs = [
+      "a" => 1,
+      "b" => 4
+    ];
     $expected = 5;
 
-    $this->processTestCase($input1, $input2, $expected);
+    $this->processTestCase($inputs, $expected);
   }
 }
 ```
@@ -993,23 +1036,30 @@ public:
 #include <gtest/gtest.h>
 #include "../src/sum.h"
 
+struct Inputs {
+  int a;
+  int b;
+};
+
 Sum* sum_ptr = new Sum();
 Sum sum = *sum_ptr;
 
-void processTestCase(int input1, int input2, int expected) {
+void processTestCase(Inputs inputs, int expected) {
   // since `sum_ptr` is a pointer which points to Sum class
   // just use `->` to access the class member
-  int actual = sum_ptr->_do(input1, input2);
-  // int actual sum._do(input1, input2) # <- this also works
+  int actual = sum_ptr->_do(inputs.a, inputs.b);
+  // int actual sum._do(inputs.a, inputs.b) # <- this also works
   ASSERT_EQ(actual, expected);
 }
 
 TEST(SumTest, SumOfTwoGivenNumbers) {
-  int input1 = 1;
-  int input2 = 4;
+  Inputs inputs {
+    .a = 1,
+    .b = 4
+  };
   int expected = 5;
 
-  processTestCase(input1, input2, expected);
+  processTestCase(inputs, expected);
 }
 ```
 

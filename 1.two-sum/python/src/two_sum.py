@@ -1,8 +1,5 @@
-class Solution:
-  def two_sum(self, inputs):
-    nums = inputs["nums"]
-    target = inputs["target"]
-
+class TwoSum:
+  def do(self, nums, target):
     map_list = {}
 
     for i in range(len(nums)):
