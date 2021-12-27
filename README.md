@@ -1036,19 +1036,22 @@ public:
 #include <gtest/gtest.h>
 #include "../src/sum.h"
 
-struct Inputs {
+class Inputs {
+public:
   int a;
   int b;
 };
 
-Sum* sum_ptr = new Sum();
-Sum sum = *sum_ptr;
+// Sum* sum_ptr = new Sum(); # <--- this is a pointer!!
+// Sum sum = *sum_ptr; # <--- this is a Sum instance
+// Sum sum; # <--- this is also a Sum instance
+Sum sum { }; // # <--- this is also a Sum instance
 
 void processTestCase(Inputs inputs, int expected) {
   // since `sum_ptr` is a pointer which points to Sum class
   // just use `->` to access the class member
-  int actual = sum_ptr->_do(inputs.a, inputs.b);
-  // int actual sum._do(inputs.a, inputs.b) # <- this also works
+  // int actual = sum_ptr->_do(inputs.a, inputs.b);
+  int actual = sum._do(inputs.a, inputs.b);
   ASSERT_EQ(actual, expected);
 }
 
