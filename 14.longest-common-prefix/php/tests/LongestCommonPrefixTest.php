@@ -7,12 +7,6 @@ use Andrew\Leetcode\LongestCommonPrefix;
 
 final class LongestCommonPrefixTest extends TestCase
 {
-	private function processTestCase(array $input, string $expected): void
-	{
-		$actual = LongestCommonPrefix::do($input);
-		$this->assertEquals($expected, $actual);
-	}
-
 	final function test_have_longest_common_prefix(): void
 	{
 		$input = [ 'flower', 'flow', 'flight' ];
@@ -27,5 +21,11 @@ final class LongestCommonPrefixTest extends TestCase
 		$expected = '';
 
 		$this->processTestCase($input, $expected);
+	}
+
+	private function processTestCase(array $input, string $expected): void
+	{
+		$actual = LongestCommonPrefix::do($input);
+		$this->assertEquals($expected, $actual);
 	}
 }

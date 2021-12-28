@@ -1,11 +1,5 @@
 use leetcode::Solution;
 
-fn process_test_case(input: &Vec<String>, expected: &str) {
-	let solution: Solution = Solution::new();
-	let actual: String = solution.longest_common_prefix(input);
-	assert_eq!(&actual, expected);
-}
-
 #[test]
 fn have_longest_common_prefix() {
 	let input: Vec<String> = vec![ "flower", "flow", "flight" ]
@@ -26,4 +20,10 @@ fn no_longest_common_prefix() {
 	let expected: &str = "";
 
 	process_test_case(&input, expected);
+}
+
+fn process_test_case(input: &Vec<String>, expected: &str) {
+	let solution: Solution = Solution::new();
+	let actual: String = solution.longest_common_prefix(input);
+	assert_eq!(&actual, expected);
 }

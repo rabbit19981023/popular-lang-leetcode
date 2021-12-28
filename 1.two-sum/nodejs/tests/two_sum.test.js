@@ -1,10 +1,4 @@
 const { TwoSum } = require('../src/two_sum')
-const twoSum = new TwoSum()
-
-const processTestCase = (inputs, expected) => {
-  const actual = twoSum._do(inputs.nums, inputs.target)
-  expect(actual).toStrictEqual(expected)
-}
 
 describe('../src/two_sum.js', () => {
   it('test case 01', () => {
@@ -37,3 +31,10 @@ describe('../src/two_sum.js', () => {
     processTestCase(inputs, expected)
   })
 })
+
+const twoSum = new TwoSum()
+
+const processTestCase = (inputs, expected) => {
+  const actual = twoSum._do(inputs.nums, inputs.target)
+  expect(actual).toStrictEqual(expected)
+}

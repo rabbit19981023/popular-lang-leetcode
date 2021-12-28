@@ -21,7 +21,7 @@ enable_testing()
 # declare the C++ test binary we want to build (`longest_common_prefix_test`)
 add_executable(
 	longest_common_prefix_test
-	./tests/longest_common_prefix_test.cc
+	./tests/longest_common_prefix_test.cpp
 )
 
 # links `longest_common_prefix_test` into GoogleTest(`gtest_main`)

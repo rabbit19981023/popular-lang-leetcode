@@ -10,12 +10,6 @@ public class TwoSumTest
 {
     TwoSum twoSum = new TwoSum();
 
-    public void processTestCase(Inputs inputs, int[] expected)
-    {
-        int[] actual = twoSum._do(inputs.getNums(), inputs.getTarget());
-        assertArrayEquals(expected, actual);
-    }
-
     @Test
     public void testCase01()
     {
@@ -50,6 +44,12 @@ public class TwoSumTest
       int[] expected = {0, 1};
 
       processTestCase(inputs, expected);
+    }
+
+    public void processTestCase(Inputs inputs, int[] expected)
+    {
+        int[] actual = twoSum._do(inputs.getNums(), inputs.getTarget());
+        assertArrayEquals(expected, actual);
     }
 
     private class Inputs

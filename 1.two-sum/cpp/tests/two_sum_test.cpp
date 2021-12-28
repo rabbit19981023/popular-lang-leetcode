@@ -7,15 +7,7 @@ public:
   int target;
 };
 
-//TwoSum* twoSum_ptr = new TwoSum();
-//TwoSum twoSum = *twoSum_ptr;
-
-TwoSum twoSum { };
-
-void processTestCase(Inputs inputs, vector<int> expected) {
-  vector<int> actual = twoSum._do(inputs.nums, inputs.target);
-  ASSERT_EQ(actual, expected);
-}
+void processTestCase(Inputs inputs, vector<int> expected);
 
 TEST(TwoSumTest, TestCase01) {
   Inputs inputs {
@@ -46,3 +38,13 @@ TEST(TwoSumTest, TestCase03) {
 
   processTestCase(inputs, expected);
 };
+
+//TwoSum* twoSum_ptr = new TwoSum();
+//TwoSum twoSum = *twoSum_ptr;
+
+TwoSum twoSum { };
+
+void processTestCase(Inputs inputs, vector<int> expected) {
+  vector<int> actual = twoSum._do(inputs.nums, inputs.target);
+  ASSERT_EQ(actual, expected);
+}

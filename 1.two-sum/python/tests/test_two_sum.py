@@ -4,12 +4,6 @@ from src.two_sum import TwoSum
 class TwoSumTest(unittest.TestCase):
   two_sum = TwoSum()
 
-  def processTestCase(self, inputs, expected):
-    nums = inputs["nums"]
-    target = inputs["target"]
-    actual = self.two_sum.do(nums, target)
-    self.assertEqual(actual, expected)
-
   def test_case_01(self):
     inputs = {
       "nums": [2, 7, 11, 15],
@@ -36,3 +30,9 @@ class TwoSumTest(unittest.TestCase):
     expected = [0,1]
 
     self.processTestCase(inputs, expected)
+
+  def processTestCase(self, inputs, expected):
+    nums = inputs["nums"]
+    target = inputs["target"]
+    actual = self.two_sum.do(nums, target)
+    self.assertEqual(actual, expected)

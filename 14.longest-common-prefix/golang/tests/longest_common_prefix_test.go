@@ -6,11 +6,6 @@ import (
 	"testing"
 )
 
-func processTestCase(t *testing.T, input []string, expected string) {
-	actual := solution.LongestCommonPrefix(input)
-	assert.Equal(t, expected, actual)
-}
-
 func Test_have_longest_common_prefix(t *testing.T) {
 	input := []string{"flower", "flow", "flight"}
 	expected := "fl"
@@ -23,4 +18,9 @@ func Test_no_longest_common_prefix(t *testing.T) {
 	expected := ""
 
 	processTestCase(t, input, expected)
+}
+
+func processTestCase(t *testing.T, input []string, expected string) {
+	actual := solution.LongestCommonPrefix(input)
+	assert.Equal(t, expected, actual)
 }

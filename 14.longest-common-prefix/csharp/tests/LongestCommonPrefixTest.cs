@@ -8,12 +8,6 @@ namespace LeetcodeTest
     {
         Solution solution = new Solution();
 
-        private void ProcessTestCase(string[] input, string expected)
-        {
-            string actual = solution.LongestCommonPrefix(input);
-            Assert.AreEqual(expected, actual);
-        }
-
         [TestMethod]
         public void have_longest_common_prefix()
         {
@@ -30,6 +24,12 @@ namespace LeetcodeTest
             string expected = "";
 
             ProcessTestCase(input, expected);
+        }
+
+        private void ProcessTestCase(string[] input, string expected)
+        {
+            string actual = solution.LongestCommonPrefix(input);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

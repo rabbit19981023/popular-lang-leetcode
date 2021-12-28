@@ -1,13 +1,6 @@
 package com.company.app;
 
-public class App
-{
-    public static void main( String[] args )
-    {
-    }
-}
-
-class Solution
+class LongestCommonPrefix
 {
     /**
      * 
@@ -15,7 +8,7 @@ class Solution
      * @return String
      * 
      */
-    public String longestCommonPrefix(String[] strs)
+    public String _do(String[] strs)
     {
         if (! isValid(strs)) {
             return "";

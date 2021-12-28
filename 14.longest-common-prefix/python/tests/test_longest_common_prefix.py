@@ -4,10 +4,6 @@ from src.longest_common_prefix import Solution
 class LongestCommonPrefixTest(unittest.TestCase):
 	solution = Solution()
 
-	def process_test_case(self, _input, expected):
-		actual = self.solution.longest_common_prefix(_input)
-		self.assertEqual(actual, expected)
-
 	def test_have_longest_common_prefix(self):
 		_input = [ "flower", "flow", "flight" ]
 		expected = "fl"
@@ -20,5 +16,6 @@ class LongestCommonPrefixTest(unittest.TestCase):
 
 		self.process_test_case(_input, expected)
 
-if __name__ == '__main__':
-	unittest.main()
+	def process_test_case(self, _input, expected):
+		actual = self.solution.longest_common_prefix(_input)
+		self.assertEqual(actual, expected)

@@ -85,10 +85,6 @@ from src.sum import Sum
 class SumTest(unittest.TestCase):
   _sum = Sum()
 
-  def process_test_case(self, inputs: dict["a": int, "b": int], expected: int):
-    actual = self._sum.do(inputs["a"], inputs["b"])
-    self.assertEqual(actual, expected)
-
   def test_sum_of_two_given_numbers(self):
     inputs = {
       "a": 1,
@@ -97,6 +93,10 @@ class SumTest(unittest.TestCase):
     expected = 5
 
     self.process_test_case(inputs, expected)
+
+  def process_test_case(self, inputs: dict, expected: int):
+    actual = self._sum.do(inputs["a"], inputs["b"])
+    self.assertEqual(actual, expected)
 ```
 
 > Finally, the project structure should be like this:
@@ -188,12 +188,6 @@ export { Sum }
 // `./tests/sum.test.js`
 
 const { Sum } = require('../src/sum')
-const sum = new Sum()
-
-const processTestCase = (inputs, expected) => {
-  const actual = sum.do(inputs.a, inputs.b)
-  expect(actual).toBe(expected)
-}
 
 describe('../src/sum.js', () => {
   it("Test: sum of two given numbers", () => {
@@ -206,6 +200,13 @@ describe('../src/sum.js', () => {
     processTestCase(inputs, expected)
   })
 })
+
+const sum = new Sum()
+
+const processTestCase = (inputs, expected) => {
+  const actual = sum.do(inputs.a, inputs.b)
+  expect(actual).toBe(expected)
+}
 ```
 
 > Create a `jest.config.js` for `Jest`:
@@ -214,7 +215,7 @@ describe('../src/sum.js', () => {
 // ./tests/jest.config.js
 
 const config = {
-  verbose: true,
+  // add your own jest config here
 };
 
 module.exports = config
@@ -334,13 +335,8 @@ import (
 )
 
 type Inputs struct {
-  a   int
-  b   int
-}
-
-func processTestCase(t *testing.T, inputs Inputs, expected int) {
-  actual := solution.Sum(inputs.a, inputs.b)
-  assert.Equal(t, expected, actual)
+  a int
+  b int
 }
 
 // first letter must be `capital` to make it can be found by `go-test`
@@ -352,6 +348,11 @@ func Test_sum_of_two_given_numbers(t *testing.T) {
   expected := 5
 
   processTestCase(t, inputs, expected)
+}
+
+func processTestCase(t *testing.T, inputs Inputs, expected int) {
+  actual := solution.Sum(inputs.a, inputs.b)
+  assert.Equal(t, expected, actual)
 }
 ```
 
@@ -473,12 +474,6 @@ struct Inputs {
   b: i32
 }
 
-fn process_test_case(inputs: &Inputs, expected: &i32) {
-  let sum: Sum = Sum::new();
-  let actual: i32 = sum._do(&inputs.a, &inputs.b);
-  assert_eq!(&actual, expected);
-}
-
 #[test]
 fn sum_of_two_given_numbers() {
   let inputs: Inputs = Inputs {
@@ -488,6 +483,12 @@ fn sum_of_two_given_numbers() {
   let expected: i32 = 5;
 
   process_test_case(&inputs, &expected);
+}
+
+fn process_test_case(inputs: &Inputs, expected: &i32) {
+  let sum: Sum = Sum::new();
+  let actual: i32 = sum._do(&inputs.a, &inputs.b);
+  assert_eq!(&actual, expected);
 }
 ```
 
@@ -599,7 +600,7 @@ namespace Leetcode
   public class Sum
   {
     static void Main(string[] args)
-    {
+    { 
     }
 
     public int Do(int a, int b)
@@ -620,21 +621,15 @@ using Leetcode;
 
 namespace LeetcodeTest
 {
-  public struct Inputs
-  {
-    public int A;
-    public int B;
-  }
-
   [TestClass]
   public class SumTest
   {
     Sum sum = new Sum();
 
-    private void ProcessTestCase(Inputs inputs, int expected)
+    public class Inputs
     {
-      int actual = sum.Do(inputs.A, inputs.B);
-      Assert.AreEqual(expected, actual);
+      public int A;
+      public int B;
     }
 
     [TestMethod]
@@ -647,6 +642,12 @@ namespace LeetcodeTest
       int expected = 5;
 
       ProcessTestCase(inputs, expected);
+    }
+
+    private void ProcessTestCase(Inputs inputs, int expected)
+    {
+      int actual = sum.Do(inputs.A, inputs.B);
+      Assert.AreEqual(expected, actual);
     }
   }
 }
@@ -743,29 +744,52 @@ import org.junit.Test;
 
 public class SumTest
 {
-  private class Inputs {
-    int a;
-    int b;
-  }
-
   Sum sum = new Sum();
 
-  private void processTestCase(Inputs inputs, int expected) {
-    int actual = sum._do(inputs.a, inputs.b);
-    assertEquals(expected, actual);
-  }
-
   @Test
-  public void sum_of_two_given_numbers() {
-    Inputs inputs = new Inputs() {
-      {
-        a = 1;
-        b = 4;
-      }
-    };
+  public void sum_of_two_given_numbers()
+  {
+    Inputs inputs = new Inputs();
+    inputs.setA(1)
+          .setB(4);
+
     int expected = 5;
 
     processTestCase(inputs, expected);
+  }
+
+  private void processTestCase(Inputs inputs, int expected)
+  {
+    int actual = sum._do(inputs.getA(), inputs.getB());
+    assertEquals(expected, actual);
+  }
+
+  private class Inputs
+  {
+    private int a;
+    private int b;
+
+    public int getA()
+    {
+      return this.a;
+    }
+
+    public int getB()
+    {
+      return this.b;
+    }
+
+    public Inputs setA(int a)
+    {
+      this.a = a;
+      return this;
+    }
+
+    public Inputs setB(int b)
+    {
+      this.b = b;
+      return this;
+    }
   }
 }
 ```
@@ -914,13 +938,6 @@ use <Vendor>\<Project-name>\Sum;
 
 final class SumTest extends TestCase
 {
-  private function processTestCase(array $inputs, int $expected): void
-  {
-    $sum = new Sum();
-    $actual = $sum->_do($inputs["a"], $inputs["b"]);
-    $this->assertEquals($expected, $actual);
-  }
-
   public function test_sum_of_two_given_numbers(): void # must start with `test*()`
   {
     $inputs = [
@@ -930,6 +947,13 @@ final class SumTest extends TestCase
     $expected = 5;
 
     $this->processTestCase($inputs, $expected);
+  }
+
+  private function processTestCase(array $inputs, int $expected): void
+  {
+    $sum = new Sum();
+    $actual = $sum->_do($inputs["a"], $inputs["b"]);
+    $this->assertEquals($expected, $actual);
   }
 }
 ```
@@ -1044,6 +1068,18 @@ public:
   int b;
 };
 
+void processTestCase(Inputs inputs, int expected);
+
+TEST(SumTest, SumOfTwoGivenNumbers) {
+  Inputs inputs {
+    .a = 1,
+    .b = 4
+  };
+  int expected = 5;
+
+  processTestCase(inputs, expected);
+}
+
 // Sum* sum_ptr = new Sum(); # <--- this is a pointer!!
 // Sum sum = *sum_ptr; # <--- this is a Sum instance
 // Sum sum; # <--- this is also a Sum instance
@@ -1055,16 +1091,6 @@ void processTestCase(Inputs inputs, int expected) {
   // int actual = sum_ptr->_do(inputs.a, inputs.b);
   int actual = sum._do(inputs.a, inputs.b);
   ASSERT_EQ(actual, expected);
-}
-
-TEST(SumTest, SumOfTwoGivenNumbers) {
-  Inputs inputs {
-    .a = 1,
-    .b = 4
-  };
-  int expected = 5;
-
-  processTestCase(inputs, expected);
 }
 ```
 
