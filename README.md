@@ -195,14 +195,16 @@ const processTestCase = (inputs, expected) => {
   expect(actual).toBe(expected)
 }
 
-test("Test: sum of two given numbers", () => {
-  const inputs = {
-    a: 1,
-    b: 4
-  }
-  const expected = 5
+describe('../src/sum.js', () => {
+  it("Test: sum of two given numbers", () => {
+    const inputs = {
+      a: 1,
+      b: 4
+    }
+    const expected = 5
 
-  processTestCase(inputs, expected)
+    processTestCase(inputs, expected)
+  })
 })
 ```
 
