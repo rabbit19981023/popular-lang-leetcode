@@ -37,3 +37,13 @@ We will use `Binary Search` to solve this problem.
 <img src="https://leetcode.com/media/original_images/14_lcp_binary_search.png" width="500px"></img>
 
 Picture Resource: [Longest Common Prefix Solutions - Leetcode](https://leetcode.com/problems/longest-common-prefix/solution/)
+
+## Complexity Analysis
+
+In the worst case we have `n` equal strings with length `m`
+
+Time complexity : `O(S．log m)`, where `S` is the sum of all characters in all strings.
+
+The algorithm makes `log m` iterations, for each of them there are `S = m ． n` comparisons, which gives in total `O(S．log m)` time complexity.
+
+Space complexity : `O(1)`. We only used constant extra space.
