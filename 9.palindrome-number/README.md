@@ -40,6 +40,6 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 
 ## Complexity Analysis
 
-Time complexity : $`O(log~10(n))`$. Because we divided the input by 10 for every iteration.
+Time complexity : <img src="https://render.githubusercontent.com/render/math?math=O(log_10(n))">. Because we divided the input by 10 for every iteration.
 
-Space complexity : $`O(1)`$.
+Space complexity : `O(1)`.
