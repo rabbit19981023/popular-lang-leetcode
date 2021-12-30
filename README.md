@@ -1043,10 +1043,12 @@ $ ./build/<test-binary>
 
 class Sum {
 public:
-  int _do(int a, int b) {
-    return a + b;
-  }
+  int _do(int a, int b);
 };
+
+int Sum::_do(int a, int b) {
+  return a + b;
+}
 
 /** DO NOT declare main function, it may make GoogleTest can't find the Tests **/
 // int main(void) {
