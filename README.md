@@ -340,8 +340,8 @@ type Inputs struct {
 }
 
 // first letter must be `capital` to make it can be found by `go-test`
-func Test_sum_of_two_given_numbers(t *testing.T) {
-  var inputs Inputs = Inputs {
+func TestSumOfTwoGivenNumbers(t *testing.T) {
+  inputs := Inputs {
     a: 1,
     b: 4,
   }

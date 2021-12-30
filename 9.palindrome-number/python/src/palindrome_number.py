@@ -3,14 +3,14 @@ class PalindromeNumber:
     if self.isNegative(num) or self.isZeroEnding(num):
       return False
 
-    reverted_num = 0
+    reverted = 0
 
-    while num > reverted_num:
-      reverted_num = (self.carry_by_1_digit(reverted_num)
+    while num > reverted:
+      reverted = (self.carry_by_1_digit(reverted)
                     + self.get_last_digit(num))
       num = self.delete_last_digit(num)
 
-    return (num == reverted_num) or (num == reverted_num // 10)
+    return (num == reverted) or (num == reverted // 10)
 
   def isNegative(self, num: int) -> bool:
     return num < 0
@@ -18,8 +18,8 @@ class PalindromeNumber:
   def isZeroEnding(self, num: int) -> bool:
     return (num % 10 == 0)
 
-  def carry_by_1_digit(self, reverted_num: int) -> int:
-    return reverted_num * 10
+  def carry_by_1_digit(self, reverted: int) -> int:
+    return reverted * 10
 
   def get_last_digit(self, num: int) -> int:
     return num % 10

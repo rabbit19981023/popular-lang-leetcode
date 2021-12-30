@@ -5,7 +5,7 @@ public:
 private:
   bool isNegative(int num);
   bool isZeroEnding(int num);
-  int carryBy1Digit(int convertedNumber);
+  int carryBy1Digit(int converted);
   int getLastDigit(int num);
   int deleteLastDigit(int num);
 };
@@ -15,15 +15,15 @@ bool PalindromeNumber::_do(int num) {
     return false;
   }
 
-  int convertedNumber = 0;
+  int converted = 0;
 
-  while (num > convertedNumber) {
-    convertedNumber = (carryBy1Digit(convertedNumber)
+  while (num > converted) {
+    converted = (carryBy1Digit(converted)
                       + getLastDigit(num));
     num = deleteLastDigit(num);
   }
 
-  return (num == convertedNumber) || (num == (convertedNumber / 10));
+  return (num == converted) || (num == (converted / 10));
 }
 
 bool PalindromeNumber::isNegative(int num) {
@@ -34,8 +34,8 @@ bool PalindromeNumber::isZeroEnding(int num) {
   return (num % 10) == 0;
 }
 
-int PalindromeNumber::carryBy1Digit(int convertedNumber) {
-  return convertedNumber * 10;
+int PalindromeNumber::carryBy1Digit(int converted) {
+  return converted * 10;
 }
 
 int PalindromeNumber::getLastDigit(int num) {

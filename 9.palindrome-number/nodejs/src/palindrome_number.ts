@@ -4,15 +4,15 @@ class PalindromeNumber {
       return false
     }
 
-    let convertedNumber = 0
+    let converted = 0
 
-    while (num > convertedNumber) {
-      convertedNumber = (this.carryBy1Digit(convertedNumber)
+    while (num > converted) {
+      converted = (this.carryBy1Digit(converted)
                         + this.getLastDigit(num))
       num = this.deleteLastDigit(num)
     }
 
-    return (num == convertedNumber) || (num == Math.floor(convertedNumber / 10))
+    return (num == converted) || (num == Math.floor(converted / 10))
   }
 
   private isNegative(num: number): boolean {
@@ -23,8 +23,8 @@ class PalindromeNumber {
     return num % 10 === 0
   }
 
-  private carryBy1Digit(convertedNumber: number): number {
-    return convertedNumber * 10
+  private carryBy1Digit(converted: number): number {
+    return converted * 10
   }
 
   private getLastDigit(num: number): number {
