@@ -20,7 +20,7 @@ func isNegative(num int) bool {
 }
 
 func isZeroEnding(num int) bool {
-	return (num % 10 == 0)
+	return (num%10 == 0)
 }
 
 func carryBy1Digit(converted int) int {

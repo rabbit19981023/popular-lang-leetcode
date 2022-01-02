@@ -1,9 +1,9 @@
 package tests
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
 	"palindrome-number/src"
+	"testing"
 )
 
 type Inputs struct {
@@ -11,11 +11,11 @@ type Inputs struct {
 }
 
 func TestPositiveNumber(t *testing.T) {
-	inputs := Inputs {
+	inputs := Inputs{
 		num: 121,
 	}
 	expected := true
-	
+
 	processTestCase(t, inputs, expected)
 }
 
