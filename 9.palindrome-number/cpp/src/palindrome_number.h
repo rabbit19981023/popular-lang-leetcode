@@ -11,7 +11,7 @@ private:
 };
 
 bool PalindromeNumber::_do(int num) {
-  if (isNegative(num) | isZeroEnding(num)) {
+  if (isNegative(num) || isZeroEnding(num)) {
     return false;
   }
 
