@@ -1,12 +1,12 @@
 package company.app;
 
-import static org.junit.Assert.assertArrayEquals;
 import org.junit.Test;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
  * Unit tests
  */
-public class TwoSumTest 
+public class TwoSumTest
 {
     TwoSum twoSum = new TwoSum();
 
