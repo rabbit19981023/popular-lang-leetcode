@@ -4,22 +4,28 @@
 
 using namespace std;
 
-class TwoSum {
+class TwoSum
+{
 public:
-  vector<int> _do(vector<int> nums, int target) {
-    map<int, int> m;
+  vector<int> _do(vector<int> nums, int target);
+};
 
-    for (int i = 0; i < nums.size(); i++) {
-      int current = nums[i];
-      int diff = target - current;
+vector<int> TwoSum::_do(vector<int> nums, int target)
+{
+  map<int, int> m;
 
-      if (m.find(current) != m.end()) {
-        return { m[current], i };
-      }
+  for (int i = 0; i < nums.size(); i++)
+  {
+    int current = nums[i];
+    int diff = target - current;
 
-      m.insert(pair<int, int>(diff, i));
+    if (m.find(current) != m.end())
+    {
+      return {m[current], i};
     }
 
-    return { };
+    m.insert(pair<int, int>(diff, i));
   }
-};
+
+  return {};
+}
