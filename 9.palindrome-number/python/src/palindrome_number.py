@@ -6,8 +6,10 @@ class PalindromeNumber:
     reverted = 0
 
     while num > reverted:
-      reverted = (self.carry_by_1_digit(reverted)
-                    + self.get_last_digit(num))
+      reverted = (
+        self.carry_by_1_digit(reverted) +
+        self.get_last_digit(num)
+      )
       num = self.delete_last_digit(num)
 
     return (num == reverted) or (num == reverted // 10)
