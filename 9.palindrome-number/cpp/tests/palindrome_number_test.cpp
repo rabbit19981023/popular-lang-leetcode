@@ -1,14 +1,16 @@
 #include <gtest/gtest.h>
 #include "../src/palindrome_number.h"
 
-class Inputs {
+class Inputs
+{
 public:
   int num;
 };
 
 void processTestCase(Inputs inputs, bool expected);
 
-TEST(PalindromeNumberTest, PositiveNumber) {
+TEST(PalindromeNumberTest, PositiveNumber)
+{
   Inputs inputs {
     .num = 121
   };
@@ -17,7 +19,8 @@ TEST(PalindromeNumberTest, PositiveNumber) {
   processTestCase(inputs, expected);
 }
 
-TEST(PalindromeNumberTest, NegativeNumber) {
+TEST(PalindromeNumberTest, NegativeNumber)
+{
   Inputs inputs {
     .num = -121
   };
@@ -26,7 +29,8 @@ TEST(PalindromeNumberTest, NegativeNumber) {
   processTestCase(inputs, expected);
 }
 
-TEST(PalindromeNumberTest, ZeroEndingNumber) {
+TEST(PalindromeNumberTest, ZeroEndingNumber)
+{
   Inputs inputs {
     .num = 10
   };
@@ -37,7 +41,8 @@ TEST(PalindromeNumberTest, ZeroEndingNumber) {
 
 PalindromeNumber palindromeNumber;
 
-void processTestCase(Inputs inputs, bool expected) {
+void processTestCase(Inputs inputs, bool expected)
+{
   bool actual = palindromeNumber._do(inputs.num);
   ASSERT_EQ(actual, expected);
 }
