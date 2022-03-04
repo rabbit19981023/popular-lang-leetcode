@@ -2,12 +2,6 @@ package com.company.app;
 
 class LongestCommonPrefix
 {
-    /**
-     * 
-     * @param String[] strs
-     * @return String
-     * 
-     */
     public String _do(String[] strs)
     {
         if (! isValid(strs)) {

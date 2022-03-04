@@ -1,18 +1,17 @@
-package com.company.app; // this package include class: Solution
+package com.company.app; // this package include class: LongestCommonPrefix
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit Tests
  */
 public class LongestCommonPrefixTest
 {
-
     LongestCommonPrefix longestCommonPrefix = new LongestCommonPrefix();
 
     @Test
-    public void havaLongestCommonPrefix()
+    public void haveLongestCommonPrefix()
     {
         Inputs inputs = new Inputs();
         inputs.setStrs(new String[] { "flower", "flow", "flight" });
